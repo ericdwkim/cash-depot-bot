@@ -61,7 +61,7 @@ public class CashDepotReportPull {
 		yesterday = getYest(1);
 
 		
-		System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", driverPath+"chromedriver");
 		
 				
 		WebDriver driver = new ChromeDriver();
