@@ -1,0 +1,4 @@
+.env
+.idea/.gitignore
+.gradle/.gitignore
+.DS_Store
