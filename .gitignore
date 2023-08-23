@@ -1,4 +1,25 @@
-.env
-.idea/.gitignore
+# Gradle specific
 .gradle/.gitignore
+build/
+
+# Gradle cache files
+file-system.probe
+fileHashes.bin
+resourcesHashesCache.bin
+
+# Gradle wrapper files (optional, only if using Gradle Wrapper)
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# IntelliJ IDEA files
+.idea/.gitignore
+
+# Compiled class files
+*.class
+*.class.uniqueId*
+previous-compilation-data.bin
+
+# Misc
+.env
 .DS_Store
+*.csv
