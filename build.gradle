@@ -4,9 +4,10 @@ plugins {
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
-    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.11.0' // Added Selenium remote driver
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59' // equiv to `Users/ekim/workspace/selenium-java-4.12.1/*` but on local cache disk @ `~/.gradle/caches`
+    implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.11.0' // Added Selenium Web Driver to resolve `java.lang.NoClassDefFoundError org/openqa/selenium/bidi/HasBiDi`
 
+    selenium-java-4.12.1
 }
 
 repositories {
@@ -16,5 +17,14 @@ repositories {
 sourceSets {
     main {
         java.srcDirs = ['src']
+    }
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.txb.cashdepot.CashDepotReportPull'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
