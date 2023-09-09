@@ -23,3 +23,6 @@ previous-compilation-data.bin
 .env
 .DS_Store
 *.csv
+
+# Dev
+dev
