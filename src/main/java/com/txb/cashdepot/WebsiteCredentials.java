@@ -1,4 +1,4 @@
-package main.java.com.txb.cashdepot;
+package com.txb.cashdepot;
 public class WebsiteCredentials {
 	
 	private String website, username, pw;

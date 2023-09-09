@@ -1,4 +1,4 @@
-package main.java.com.txb.cashdepot;
+package com.txb.cashdepot;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
