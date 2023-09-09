@@ -1,11 +1,13 @@
 plugins {
     id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
 }
 
 dependencies {
     implementation 'org.apache.commons:commons-lang3:3.12.0'
     implementation 'org.seleniumhq.selenium:selenium-java:4.12.1'
     implementation 'org.seleniumhq.selenium:selenium-remote-driver:4.12.1'
+    implementation 'ch.qos.logback:logback-classic:1.2.3'
 }
 
 repositories {
@@ -30,4 +32,11 @@ jar {
     }
 
     from 'src/main/resources'
+}
+
+shadowJar {
+    archiveBaseName.set('cash_depot_bot')
+    archiveVersion.set('0.1.0')
+    archiveClassifier.set('')
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
 }
