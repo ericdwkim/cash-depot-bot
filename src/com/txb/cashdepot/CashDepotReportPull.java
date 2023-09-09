@@ -17,11 +17,12 @@ public class CashDepotReportPull {
 	
 	//used for testing
 	static boolean isTest = false;
-	static String user = "bots";
 	static String testLabel = "TEST - ";
 	
 	//must adjust dlFolder depending on where the report will download (e.g. ekuriakose vs ekuriakosea)
-	static String dlFolder = "C:/Users/"+user+"/Downloads/";
+
+	static String dlFolder = "/Users/ekim/Downloads/";
+
 	//network folder where PDI pulls in report
 	static String destFolder = "\\\\PDIPRODSQL\\enterprisedata\\Imports\\Daily Paperwork\\ATM\\";
 	static String destFolderArchive = destFolder+"Bot Archive\\";
