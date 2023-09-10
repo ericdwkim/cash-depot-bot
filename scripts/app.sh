@@ -1,44 +1,39 @@
 #!/bin/bash
-
+# Display a message indicating the script is starting
+echo "Running CashDepot script..."
 
 # Display the current working directory
 echo "Current working directory: $(pwd)"
 
-# Path to Java executable (WSL-style)
+# Path to Gradlew
+GRADLEW_PATH="/Users/ekim/workspace/personal/cash_depot_bot/gradlew"
+echo "Using gradlew in: "$GRADLEW_PATH""
 
+# Path to Java executable
 JAVA_EXEC="/usr/bin/java"
+echo "Using java.exe in: "$JAVA_EXEC""
 
-JAR_PATH="/Users/ekim/workspace/personal/cash_depot_bot/CashDepot.jar"
+# Path to the generated JAR file
+JAR_PATH="/Users/ekim/workspace/personal/cash_depot_bot/build/libs/cash_depot_bot-0.1.0.jar"
+echo "Using main uber JAR in: "$JAR_PATH""
 
-SELENIUM_JARS_PATH="/Users/ekim/workspace/selenium-java-4.12.1/*"
+# Run Gradle clean and build tasks
+echo "Running Gradle clean and build..."
+cd /Users/ekim/workspace/personal/cash_depot_bot
+"$GRADLEW_PATH" clean build shadowJar
 
+# Check if the build was successful
+if [ $? -eq 0 ]; then
+  # Run the Java application
+  echo "Running the Java application..."
+  "$JAVA_EXEC" -jar "$JAR_PATH"
 
-# Get parent dir from jar path
-PROJECT_DIR="$(dirname "$JAR_PATH")"
-
-echo "Changing to project dir as working directory"
-# shellcheck disable=SC2164
-cd "$PROJECT_DIR"
-
-# Change dirs
-#echo "Changing to src dir as working directory"
-
-#SRC_DIR="$PROJECT_DIR/src"
-# shellcheck disable=SC2164
-#cd "$SRC_DIR"
-
-# Confirm changed to correct working dir prior to execution
-echo "Current working directory: $(pwd)"
-
-# Display a message indicating the script is starting
-echo "Running CashDepot script..."
-
-# Run the Java application with the Selenium WebDriver JARs in the classpath
-"$JAVA_EXEC" -cp "$SELENIUM_JARS_PATH" -jar "$JAR_PATH"
-
-# Display a message indicating the script has finished
-echo "CashDepot script completed."
+  # Display a message indicating the script has finished
+  echo "CashDepot script completed."
+else
+  echo "Gradle build failed. Exiting..."
+  exit 1
+fi
 
 # Uncomment the line below to add a pause (optional)
 read -p "Press Enter to exit..."
-
