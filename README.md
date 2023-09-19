@@ -93,6 +93,6 @@ Choose your preferred method based on your workflow. The Gradle Wrapper streamli
 - `build/libs/`: Contains the Uber JAR
 - `build/classes/java/main/com/txb/cashdepot`: Compiled source files
 
-> **Note**: If you're confused about why the `Main-Class` in the MANIFEST doesn't match the `.class` file paths, it's because the `build.classes.java.main` directories are abstracted away during the initial build.
+> **Note**: If you're confused about why the `Main-Class` in the MANIFEST.MF (located in`build/tmp/jar/`) doesn't match the `.class` file paths, it's because the `build.classes.java.main` directories are abstracted away during the initial build.
 
 For any additional queries, consult the documentation or reach out to the development team.
