@@ -36,7 +36,7 @@ public class CashDepotReportPull {
 	static InputStream stream = System.in;
 	static Scanner scnr = new Scanner(stream);
 	static String driverPath = "/opt/homebrew/bin/"; // chromedriver ver 116 on M1
-//	static String driverPath = "C:/Users/ekima/AppData/Local/anaconda3/envs/bots/Lib/site-packages/seleniumbase/drivers/"; // chromedriver ver 116 on windows
+//		static String driverPath = "c:\\chromedriver-win64\\"; // chromedriver ver 116 on windows
 
 	//cashdepot site and account info
 	static WebsiteCredentials cashdepot = new WebsiteCredentials("https://webmon.cashdepotplus.com/spsadmin/addins/Reports/rptIndex.aspx","webmon0764","NEkwikchek");
