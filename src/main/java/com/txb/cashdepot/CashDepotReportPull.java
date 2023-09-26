@@ -30,7 +30,7 @@ public class CashDepotReportPull {
 	static String fileName1 = testLabel+fileName;
 	
 	static String yesterday;
-	static int daysBack = -2;
+	static int daysBack = -3;
 	//used to create version of jar that allows custom date picking, should be false for default yesterday pull
 	static boolean isCustom = false;
 	static InputStream stream = System.in;
