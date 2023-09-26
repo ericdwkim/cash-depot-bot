@@ -90,13 +90,14 @@ public class CashDepotReportPull {
 	//returns "yesterday's" date in requested format
 	public static String getYest(int format)
 	{
-		LocalDateTime yest = LocalDateTime.now().plusDays(daysBack);
-		DateTimeFormatter f1 = DateTimeFormatter.ofPattern("yyyy.MM.dd", Locale.ENGLISH);
-		DateTimeFormatter f2 = DateTimeFormatter.ofPattern("yyyyMMdd", Locale.ENGLISH);
-		DateTimeFormatter f3 = DateTimeFormatter.ofPattern("MMddyyyy", Locale.ENGLISH);
-		
+		LocalDateTime yest = LocalDateTime.now().plusDays(daysBack); // 3 day offset
+		DateTimeFormatter f1 = DateTimeFormatter.ofPattern("yyyy.MM.dd", Locale.ENGLISH); // format for `yesterday`aka the actual reports data date we want to fetch (this just changes the span (?) value by providing the correct datetime format so it __MUST__ be in this exact format
+		DateTimeFormatter f2 = DateTimeFormatter.ofPattern("yyyyMMdd", Locale.ENGLISH); // format for date column in csv
+		DateTimeFormatter f3 = DateTimeFormatter.ofPattern("MMddyyyy", Locale.ENGLISH); // format for csv filenames
+
 		LocalDateTime yestMinusOne = LocalDateTime.now().plusDays(daysBack-1); //gives date as the day before "yesterday" to compensate for PDI lockout issues
-		
+		// @dev: this should NOT be affected with the new 3 day offset change as currently it is only used for stdout to console
+
 		switch(format) {
 			case 1: 
 				return f1.format(yest);
@@ -150,10 +151,14 @@ public class CashDepotReportPull {
 		}
 		
 		File orig = new File(dlFolder+fileName+".txt");
-		File  dest = new File(destFolder+fileName1+".csv");
+//		System.out.println("File orig:" + orig);
+		File dest = new File(destFolder+fileName1+"-"+getYest(3)+".csv");
+//		System.out.println("File dest:" + dest);
+
 		//archived report from 2 days ago 
 		File src = new File(destFolderArchive+fileName1+"-"+getYest(3)+".csv");
-		System.out.print(getYest(4));
+//		System.out.println("File src:" + src);
+//		System.out.print(getYest(4));
 		
 		//copies src file to dest overwriting the report that was previously there, except if requesting custom date report
 		if(!isCustom)
