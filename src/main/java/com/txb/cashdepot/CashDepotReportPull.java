@@ -152,7 +152,7 @@ public class CashDepotReportPull {
 		
 		File orig = new File(dlFolder+fileName+".txt");
 //		System.out.println("File orig:" + orig);
-		File dest = new File(destFolder+fileName1+"-"+getYest(3)+".csv");
+		File dest = new File(destFolder+fileName1+".csv");
 //		System.out.println("File dest:" + dest);
 
 		//archived report from 2 days ago 
